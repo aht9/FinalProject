@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextClock;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -66,13 +67,15 @@ public class SearchMovieActivity extends AppCompatActivity {
                 super.onSuccess(statusCode, headers, response);
                 Gson gson = new Gson();
                 OMDbApi omDbApi = gson.fromJson(response.toString(),OMDbApi.class);
-                for(int i =0;i < omDbApi.getSearch().size();i++){
-                    Title_Sh_Movie.add(omDbApi.getSearch().get(i).getTitle());
-                    Year_Sh_Movie.add(omDbApi.getSearch().get(i).getYear());
-                    imdbID_Sh_Movie.add(omDbApi.getSearch().get(i).getImdbID());
-                    Type_Sh_Movie.add(omDbApi.getSearch().get(i).getType());
-                    Poster_Sh_Movie.add(omDbApi.getSearch().get(i).getPoster());
-                }
+                try {
+                    for(int i =0;i < omDbApi.getSearch().size();i++) {
+                        Title_Sh_Movie.add(omDbApi.getSearch().get(i).getTitle());
+                        Year_Sh_Movie.add(omDbApi.getSearch().get(i).getYear());
+                        imdbID_Sh_Movie.add(omDbApi.getSearch().get(i).getImdbID());
+                        Type_Sh_Movie.add(omDbApi.getSearch().get(i).getType());
+                        Poster_Sh_Movie.add(omDbApi.getSearch().get(i).getPoster());
+                    }
+                }catch (Exception ex){}
                 initRecyclerShowMovie();
             }
 

@@ -45,13 +45,16 @@ public class SqlLiteDB extends SQLiteOpenHelper {
                 + Genre + "','"
                 + Actors + "','"
                 + imdbID + "','"
-                + Poster.toString() + "','"
+                + Poster + "','"
                 + Plot
                 + "')";
         SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL(INSERT_INTO_FinalProject_QUERY);
-        db.close();
-    }
+        try {
+            db.execSQL(INSERT_INTO_FinalProject_QUERY);
+        } catch (Exception ex) {}
+            db.close();
+        }
+
 
     public List<MovieOfflineDetails> getFinalProjectNames() {
         ArrayList<MovieOfflineDetails> list = new ArrayList<MovieOfflineDetails>();

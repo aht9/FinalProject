@@ -67,8 +67,11 @@ public class RcMovieSearchAdapter extends RecyclerView.Adapter<RcMovieSearchHold
     @Override
     public int getItemCount() {
         int i = 0;
-        if(Title_Sh_Movie != null)
-            i = Title_Sh_Movie.size();
+
+            if(Title_Sh_Movie != null)
+                i = Title_Sh_Movie.size();
+
+
         return i;
     }
 }
